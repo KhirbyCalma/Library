@@ -14,12 +14,11 @@ addBookBtn.addEventListener("click", () => {
 addBookForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const bookData = Object.fromEntries(new FormData(addBookForm));
-    const book = new Book(generateUUID(), bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false);
+    const book = new Book(bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false);
     myLibrary.addBook(book);
     updateBookDisplay();
     addBookModal.close();
     addBookForm.reset();
-    console.log(myLibrary.books);
 });
 
 closeBookModalBtn.addEventListener("click", () => {
@@ -28,12 +27,6 @@ closeBookModalBtn.addEventListener("click", () => {
 });
 
 // CUSTOM FUNCTIONS
-function generateUUID() {
-    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
-    );
-}
-
 // FUNCTION TO CREATE BOOK CARD HTML ELEMENT
 function createBookCard(book) {
     const bookContainer = document.createElement('div');
@@ -50,7 +43,7 @@ function createBookCard(book) {
     bookPages.textContent = book.pages;
     bookHasRead.checked = book.hasRead;
     removeBookBtn.addEventListener("click", () => {
-        myLibrary.removeBookByUUID(book.uuid);
+        myLibrary.removeBook(book);
         updateBookDisplay();
     });
 
@@ -79,14 +72,13 @@ function Library() {
 Library.prototype.addBook = function(book) {
     this.books.push(book);
 }
-Library.prototype.removeBookByUUID = function(bookUUID) {
-    this.books = this.books.filter((book) => book.uuid !== bookUUID);
+Library.prototype.removeBook = function(bookToBeRemoved) {
+    this.books = this.books.filter((book) => book !== bookToBeRemoved);
 }
 const myLibrary = new Library();
 
 // BOOK OBJECT (ATTRIBUTES)
-function Book(uuid, title, author, pages, hasRead) {
-    this.uuid = uuid;
+function Book(title, author, pages, hasRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
