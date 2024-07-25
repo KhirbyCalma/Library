@@ -51,3 +51,12 @@ for (const book of myLibrary) {
     body.appendChild(createBookCard(book));
 }
 
+const addBookBtn = document.getElementById("add-book");
+const addBookModal = document.getElementById("add-book-modal");
+const closeBookModalBtn = document.getElementById("close-book-modal");
+addBookBtn.addEventListener("click", () => {
+    addBookModal.showModal();
+});
+closeBookModalBtn.addEventListener("click", () => {
+    addBookModal.close();
+});
