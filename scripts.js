@@ -28,7 +28,7 @@ function createBookCard(book) {
     bookTitle.textContent = book.title;
     bookAuthor.textContent = book.author;
     bookPages.textContent = book.pages;
-    bookHasRead.setAttribute("checked", book.hasRead);
+    bookHasRead.checked = book.hasRead;
 
     bookContainer.appendChild(bookTitle);
     bookContainer.appendChild(bookAuthor);
@@ -38,12 +38,7 @@ function createBookCard(book) {
     return bookContainer;
 }
 
-const body = document.querySelector('main .books');
-
-for (const book of myLibrary) {
-    body.appendChild(createBookCard(book));
-}
-
+const booksContainer = document.querySelector('main .books');
 const addBookBtn = document.getElementById("add-book");
 const addBookModal = document.getElementById("add-book-modal");
 const addBookForm = document.getElementById("book-form");
@@ -54,9 +49,11 @@ addBookBtn.addEventListener("click", () => {
 addBookForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const bookData = Object.fromEntries(new FormData(addBookForm));
-    addBookToLibrary(new Book(bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false));
+    const book = new Book(bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false);
+    addBookToLibrary();
     addBookModal.close();
     addBookForm.reset();
+    booksContainer.appendChild(createBookCard(book));
 });
 closeBookModalBtn.addEventListener("click", () => {
     addBookForm.reset();
