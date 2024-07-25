@@ -38,15 +38,16 @@ function createBookCard(book) {
     return bookContainer;
 }
 
-const body = document.querySelector('body');
-for (let i = 0; i < 3; i++) {
-    let bookTitle = prompt("Input title of a book:", "Example Title");
-    let bookAuthor = prompt("Input author of said book:", "Example Author");
-    let bookPages = prompt("Input amount of pages in said book:", 10);
-    let bookHasRead = prompt("Have you read the book? (yes or no)", "no");
-    addBookToLibrary(new Book(bookTitle, bookAuthor, bookPages, bookHasRead === "yes" ? true : false));
-}
+const body = document.querySelector('main .books');
+// for (let i = 0; i < 3; i++) {
+//     let bookTitle = prompt("Input title of a book:", "Example Title");
+//     let bookAuthor = prompt("Input author of said book:", "Example Author");
+//     let bookPages = prompt("Input amount of pages in said book:", 10);
+//     let bookHasRead = prompt("Have you read the book? (yes or no)", "no");
+//     addBookToLibrary(new Book(bookTitle, bookAuthor, bookPages, bookHasRead === "yes" ? true : false));
+// }
 
 for (const book of myLibrary) {
     body.appendChild(createBookCard(book));
 }
+
