@@ -17,8 +17,36 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function createBookCard(book) {
+    const bookContainer = document.createElement('div');
+    const bookTitle = document.createElement('h1');
+    const bookAuthor = document.createElement('h2');
+    const bookPages = document.createElement('p');
+    const bookHasRead = document.createElement('input');
+    bookHasRead.setAttribute("type", "checkbox");
+
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    bookPages.textContent = book.pages;
+    bookHasRead.setAttribute("checked", book.hasRead);
+
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookPages);
+    bookContainer.appendChild(bookHasRead);
+
+    return bookContainer;
+}
+
+const body = document.querySelector('body');
 for (let i = 0; i < 3; i++) {
     let bookTitle = prompt("Input title of a book:", "Example Title");
-    addBookToLibrary(new Book(bookTitle));
+    let bookAuthor = prompt("Input author of said book:", "Example Author");
+    let bookPages = prompt("Input amount of pages in said book:", 10);
+    let bookHasRead = prompt("Have you read the book? (yes or no)", "no");
+    addBookToLibrary(new Book(bookTitle, bookAuthor, bookPages, bookHasRead === "yes" ? true : false));
 }
-console.table(myLibrary);
+
+for (const book of myLibrary) {
+    body.appendChild(createBookCard(book));
+}
