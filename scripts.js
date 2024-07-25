@@ -9,7 +9,7 @@ function Book(title, author, pages, hasRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.hasRead = this.hasRead;
+    this.hasRead = hasRead;
 }
 
 // Adds book object to library array
@@ -39,13 +39,6 @@ function createBookCard(book) {
 }
 
 const body = document.querySelector('main .books');
-// for (let i = 0; i < 3; i++) {
-//     let bookTitle = prompt("Input title of a book:", "Example Title");
-//     let bookAuthor = prompt("Input author of said book:", "Example Author");
-//     let bookPages = prompt("Input amount of pages in said book:", 10);
-//     let bookHasRead = prompt("Have you read the book? (yes or no)", "no");
-//     addBookToLibrary(new Book(bookTitle, bookAuthor, bookPages, bookHasRead === "yes" ? true : false));
-// }
 
 for (const book of myLibrary) {
     body.appendChild(createBookCard(book));
@@ -53,10 +46,19 @@ for (const book of myLibrary) {
 
 const addBookBtn = document.getElementById("add-book");
 const addBookModal = document.getElementById("add-book-modal");
+const addBookForm = document.getElementById("book-form");
 const closeBookModalBtn = document.getElementById("close-book-modal");
 addBookBtn.addEventListener("click", () => {
     addBookModal.showModal();
 });
+addBookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const bookData = Object.fromEntries(new FormData(addBookForm));
+    addBookToLibrary(new Book(bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false));
+    addBookModal.close();
+    addBookForm.reset();
+});
 closeBookModalBtn.addEventListener("click", () => {
+    addBookForm.reset();
     addBookModal.close();
 });
