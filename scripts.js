@@ -1,8 +1,11 @@
 "use strict";
-
-console.log("Hello world!");
-
-const myLibrary = [];
+function Library() {
+    this.books = [];
+} 
+Library.prototype.addBook = function(book) {
+    this.books.push(book);
+}
+const myLibrary = new Library();
 
 // Book Constructor
 function Book(title, author, pages, hasRead) {
@@ -10,11 +13,6 @@ function Book(title, author, pages, hasRead) {
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
-}
-
-// Adds book object to library array
-function addBookToLibrary(book) {
-    myLibrary.push(book);
 }
 
 function createBookCard(book) {
@@ -38,6 +36,13 @@ function createBookCard(book) {
     return bookContainer;
 }
 
+function updateBookDisplay() {
+    booksContainer.innerHTML = '';
+    for (let book of myLibrary.books) {
+        booksContainer.appendChild(createBookCard(book));
+    }
+}
+
 const booksContainer = document.querySelector('main .books');
 const addBookBtn = document.getElementById("add-book");
 const addBookModal = document.getElementById("add-book-modal");
@@ -50,10 +55,11 @@ addBookForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const bookData = Object.fromEntries(new FormData(addBookForm));
     const book = new Book(bookData.bookTitle, bookData.bookAuthor, bookData.bookPages, "bookHasRead" in bookData ? true : false);
-    addBookToLibrary();
+    myLibrary.addBook(book);
+    updateBookDisplay();
     addBookModal.close();
     addBookForm.reset();
-    booksContainer.appendChild(createBookCard(book));
+    
 });
 closeBookModalBtn.addEventListener("click", () => {
     addBookForm.reset();
