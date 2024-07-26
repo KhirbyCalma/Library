@@ -79,3 +79,12 @@ header button#add-book:active {
     background-color: hsl(from var(--primary-color) h s calc(l - 5));
     box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
+
+/* FOOTER SECTION */
+footer {
+    padding: var(--global-spacing);
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
