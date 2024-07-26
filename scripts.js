@@ -42,6 +42,11 @@ function createBookCard(book) {
     bookAuthor.textContent = book.author;
     bookPages.textContent = book.pages;
     bookHasRead.checked = book.hasRead;
+
+    bookHasRead.addEventListener("click", () => {
+        myLibrary.updateBookReadStatus(book);
+        updateBookDisplay();
+    });
     removeBookBtn.addEventListener("click", () => {
         myLibrary.removeBook(book);
         updateBookDisplay();
@@ -74,6 +79,9 @@ Library.prototype.addBook = function(book) {
 }
 Library.prototype.removeBook = function(bookToBeRemoved) {
     this.books = this.books.filter((book) => book !== bookToBeRemoved);
+}
+Library.prototype.updateBookReadStatus = function(bookToBeUpdatedReadStatus) {
+    bookToBeUpdatedReadStatus.hasRead = !bookToBeUpdatedReadStatus.hasRead;
 }
 const myLibrary = new Library();
 
