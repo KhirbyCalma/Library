@@ -7,3 +7,75 @@ body {
 main {
     flex: 1;
 }
+
+:root {
+    --global-spacing: 1rem;
+    font-family: "Ubuntu", sans-serif;
+    --primary-color: #FFC000;
+}
+
+/* HEADER SECTION */
+header {
+    background-color: black;
+    padding: var(--global-spacing);
+    display: flex;
+    gap: var(--global-spacing);
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+header button#add-book {
+    appearance: none;
+    background-color: var(--primary-color);
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+header button#add-book:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+header button#add-book:hover {
+    background-color: hsl(from var(--primary-color) h s calc(l - 2.5));
+}
+
+header button#add-book:focus {
+    background-color: hsl(from var(--primary-color) h s calc(l - 7.5));
+    outline: none;
+}
+
+header button#add-book:disabled {
+    background-color: lightgrey;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+header button#add-book:active {
+    background-color: hsl(from var(--primary-color) h s calc(l - 5));
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
