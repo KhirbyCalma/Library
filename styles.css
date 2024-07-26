@@ -10,8 +10,12 @@ main {
 
 :root {
     --global-spacing: 1rem;
-    font-family: "Ubuntu", sans-serif;
     --primary-color: #FFC000;
+}
+
+html,
+body {
+    font-family: "Ubuntu", sans-serif;
 }
 
 /* HEADER SECTION */
