@@ -53,7 +53,7 @@ function createBookCard(book) {
     bookHasReadCheckbox.checked = book.hasRead;
 
     bookHasReadCheckbox.addEventListener("click", () => {
-        myLibrary.updateBookReadStatus(book);
+        book.updateBookReadStatus();
         updateBookDisplay();
     });
     removeBookBtn.addEventListener("click", () => {
@@ -91,10 +91,6 @@ Library.prototype.removeBook = function(bookToBeRemoved) {
     this.books = this.books.filter((book) => book !== bookToBeRemoved);
     console.table(this.books);
 }
-Library.prototype.updateBookReadStatus = function(bookToBeUpdatedReadStatus) {
-    bookToBeUpdatedReadStatus.hasRead = !bookToBeUpdatedReadStatus.hasRead;
-    console.table(this.books);
-}
 const myLibrary = new Library();
 
 // BOOK OBJECT (ATTRIBUTES)
@@ -103,4 +99,8 @@ function Book(title, author, pages, hasRead) {
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
+}
+Book.prototype.updateBookReadStatus = function() {
+    this.hasRead = !this.hasRead;
+    console.table(myLibrary.books);
 }
