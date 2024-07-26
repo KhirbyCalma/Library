@@ -21,19 +21,19 @@
                 <h1>Book Information</h1>
                 <form name="bookForm" action="" method="POST" id="book-form">
                     <div class="book-form-field">
-                        <label for="book-title">Title*</label>
+                        <label for="book-title">Title<strong><span aria-label="required">*</span></strong></label>
                         <input type="text" name="bookTitle" id="book-title" required>
                     </div>
                     <div class="book-form-field">
-                        <label for="book-author">Author*</label>
+                        <label for="book-author">Author<strong><span aria-label="required">*</span></strong></label>
                         <input type="text" name="bookAuthor" id="book-author" required>
                     </div>
                     <div class="book-form-field">
-                        <label for="book-pages">Pages*</label>
+                        <label for="book-pages">Pages<strong><span aria-label="required">*</span></strong></label>
                         <input type="number" name="bookPages" id="book-pages" min="1" required>
                     </div>
                     <div class="book-form-field">
-                        <label for="book-has-read">Has Read*</label>
+                        <label for="book-has-read">Read?<strong><span aria-label="required">*</span></strong></label>
                         <input type="checkbox" name="bookHasRead" id="book-has-read">
                     </div>
                     <button type="submit" id="submit-book">Add</button>

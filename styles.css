@@ -85,6 +85,135 @@ header button#add-book:active {
 }
 
 /* MAIN SECTION */
+main dialog#add-book-modal {
+    padding: calc(var(--global-spacing) * 2);
+    border: none !important;
+    border-radius: 8px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+}
+
+main dialog#add-book-modal h1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: calc(var(--global-spacing) / 2);
+}
+
+main dialog#add-book-modal form#book-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--global-spacing) / 4);
+    margin-bottom: calc(var(--global-spacing) / 2);
+}
+
+main dialog#add-book-modal form#book-form .book-form-field span[aria-label="required"] {
+    color: red;
+    font-weight: bold;
+}
+
+main dialog#add-book-modal form#book-form button#submit-book {
+    appearance: none;
+    background-color: rgb(56, 140, 70); 
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+}
+
+main dialog#add-book-modal form#book-form button#submit-book:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+main dialog#add-book-modal form#book-form button#submit-book:hover {
+    background-color: hsl(from rgb(56, 140, 70) h s calc(l - 2.5));
+}
+
+main dialog#add-book-modal form#book-form button#submit-book:focus {
+    background-color: hsl(from	rgb(56, 140, 70) h s calc(l - 7.5));
+    outline: none;
+}
+
+main dialog#add-book-modal form#book-form button#submit-book:disabled {
+    background-color: lightgrey;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+main dialog#add-book-modal form#book-form button#submit-book:active {
+    background-color: hsl(from 	rgb(56, 140, 70) h s calc(l - 5));
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+main dialog#add-book-modal button#close-book-modal {
+    appearance: none;
+    background-color: #FF0000; 
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+}
+
+main dialog#add-book-modal button#close-book-modal:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+main dialog#add-book-modal button#close-book-modal:hover {
+    background-color: hsl(from #FF0000 h s calc(l - 2.5));
+}
+
+main dialog#add-book-modal button#close-book-modal:focus {
+    background-color: hsl(from	#FF0000 h s calc(l - 7.5));
+    outline: none;
+}
+
+main dialog#add-book-modal button#close-book-modal:disabled {
+    background-color: lightgrey;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+}
+
+main dialog#add-book-modal button#close-book-modal:active {
+    background-color: hsl(from 	#FF0000 h s calc(l - 5));
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
 main div.books {
     padding: var(--global-spacing);
     display: grid;
